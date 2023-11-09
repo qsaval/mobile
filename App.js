@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import Home from './components/Home';
+import Categorie from "./components/Categorie";
+import Panier from "./components/Panier";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+const tab = createBottomTabNavigator()
+
+export default function App(){
+
+    return(
+        <NavigationContainer>
+            <tab.Navigator screenOptions={{
+                tabBarActiveBackgroundColor: '#4173ef',
+                tabBarStyle: { backgroundColor: 'blue'},
+                tabBarLabelStyle: { display: 'none' }
+            }}>
+                <tab.Screen name="Home" component={Home} options={{ tabBarIcon: () => (
+                        <Entypo name="home" size={24} color="white" />
+                    ),
+                    headerShown: false
+                }}/>
+                <tab.Screen name="Categorie" component={Categorie} options={{ tabBarIcon: () => (
+                        <AntDesign name="book" size={24} color="white" />
+                    ),
+                    headerShown: false
+                }}/>
+                <tab.Screen name="Panier" component={Panier} options={{ tabBarIcon: () => (
+                        <AntDesign name="shoppingcart" size={24} color="white" />
+                    )
+                }}/>
+            </tab.Navigator>
+        </NavigationContainer>)
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
