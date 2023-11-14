@@ -3,13 +3,13 @@ import {Button, Text, View} from "react-native";
 
 const Quantite = ({value}) => {
 
-    const [quantite, setQuantite] = useState(value)
+    const [quantite, setQuantite] = useState(value);
     const handlePlus = (e) => {
-        setQuantite( q => q + 1)
+        setQuantite( q => q + 1);
     }
 
     const handleMoins = (e) => {
-        setQuantite(q => q - 1)
+        setQuantite(q => q - 1);
     }
 
     return (

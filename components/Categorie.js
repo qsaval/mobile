@@ -4,19 +4,33 @@ import axios from "axios";
 import {createStackNavigator} from "@react-navigation/stack";
 import Liste from "./Liste";
 import Detail from "./Detail";
+import {NavigationContainer} from "@react-navigation/native";
 
 function CategorieScreen({navigation}) {
     const [data, setData] = useState([{
         id: 10,
-        nom_categorie: "moi"
+        nom_categorie: "bd",
+        image: require('../assets/image/bd.png')
     },
         {
             id: 23,
-            nom_categorie: "toi"
+            nom_categorie: "dc",
+            image: require('../assets/image/dc.png')
         },
         {
             id: 24,
-            nom_categorie: "lui"
+            nom_categorie: "marvel",
+            image: require('../assets/image/marvel.png')
+        },
+        {
+            id: 25,
+            nom_categorie: "shonen",
+            image: require('../assets/image/shonen.png')
+        },
+        {
+            id: 26,
+            nom_categorie: "seinen",
+            image: require('../assets/image/seinen.png')
         }]);
 
     useEffect(() => {
@@ -39,7 +53,7 @@ function CategorieScreen({navigation}) {
                 renderItem={({item}) => (
                     <View style={{marginBottom: 20}}>
                         <View style={{flex: 1, alignItems: 'center'}}>
-                            <Image style={{justifyContent: "center", width: 290, height: 170}} source={require("../assets/image/comic.png")} />
+                            <Image style={{justifyContent: "center", width: 290, height: 170}} source={item.image} />
                         </View>
                         <Button title={item.nom_categorie}  onPress={() => navigation.navigate({
                             name: item.nom_categorie,
@@ -54,7 +68,7 @@ function CategorieScreen({navigation}) {
 const ListeScreen = ({route, navigation}) => {
 
   return(
-      <Liste value={route.params.id} navigation={navigation}/>
+      <Liste value={route.params.id} titre={route.params.nom_categorie} navigation={navigation}/>
   )
 }
 const DetailScreen = ({route}) => {
@@ -65,13 +79,31 @@ const DetailScreen = ({route}) => {
 }
 
 const Categorie = () => {
+    const [categories, setCategories] = useState([{
+        id: 10,
+        nom_categorie: "bd"
+    },
+        {
+            id: 23,
+            nom_categorie: "dc"
+        },
+        {
+            id: 24,
+            nom_categorie: "marvel"
+        },
+        {
+            id: 25,
+            nom_categorie: "shonen"
+        },
+        {
+            id: 26,
+            nom_categorie: "seinen"
+        }]);
     const Stack = createStackNavigator()
     return (
         <Stack.Navigator>
             <Stack.Screen name="Categorie" component={CategorieScreen} />
-            <Stack.Screen name="moi" component={ListeScreen} />
-            <Stack.Screen name="toi" component={ListeScreen} />
-            <Stack.Screen name="lui" component={ListeScreen} />
+            {categories.map((categorie) => (<Stack.Screen name={categorie.nom_categorie} component={ListeScreen} />))}
             <Stack.Screen name="toto" component={DetailScreen} />
             <Stack.Screen name="tutu" component={DetailScreen} />
             <Stack.Screen name="titi" component={DetailScreen} />

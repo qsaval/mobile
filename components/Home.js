@@ -1,6 +1,7 @@
-import {Button, Image, Text, View} from 'react-native'
-import {useState} from "react";
+import {Button, FlatList, Image, Text, View} from 'react-native'
+import React, {useState} from "react";
 import BdCarousel from "./BdCarousel";
+import categorie from "./Categorie";
 
 
 export default function Home(){
@@ -10,31 +11,37 @@ export default function Home(){
             require('../assets/image/eigyr.jpeg'),
             require('../assets/image/marvel_comic_n19.jpeg'),
             require('../assets/image/sakamoto_days_t1.jpeg')
+        ],
+        categories: [
+            {
+                nom_categorie: 'bd',
+                image: require('../assets/image/bd.png')
+            },
+            {
+                nom_categorie: 'comic',
+                image: require('../assets/image/comic.png')
+            },
+            {
+                nom_categorie: 'manga',
+                image: require('../assets/image/manga.png')
+            }
         ]
     })
 
     return (
         <View>
             <View style={{alignItems: 'center'}}>
-                <Image source={require('../assets/image/logo.png')} style={{width:100, height:100, fontSize: 25, marginBottom: 30, padding: 24, marginTop: 20 }}/>
+                <Image source={require('../assets/image/logo.png')} style={{width:100, height:100, marginBottom: 30, padding: 24, marginTop: 20 }}/>
             </View>
-
-
             <BdCarousel bds={image.bd}/>
             <View style={{ padding: 24, marginTop: 20 }}>
                 <View style={{flexDirection: 'row', margin:20}}>
-                    <View style={{marginEnd:10}}>
-                        <Image style={{width: 100, height: 100}} source={require('../assets/image/bd.png')}/>
-                        <Button title="bd"/>
-                    </View>
-                    <View style={{marginEnd:10}}>
-                        <Image style={{width: 100, height: 100}} source={require('../assets/image/comic.png')}/>
-                        <Button title="comic"/>
-                    </View>
-                    <View>
-                        <Image style={{width: 100, height: 100}} source={require('../assets/image/manga.png')}/>
-                        <Button title="manga"/>
-                    </View>
+                    {image.categories.map((categorie) =>
+                        <View style={{marginEnd:10}}>
+                            <Image style={{width: 100, height: 100}} source={categorie.image}/>
+                            <Button title={categorie.nom_categorie}/>
+                        </View>
+                    )}
                 </View>
             </View>
         </View>

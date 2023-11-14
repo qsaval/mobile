@@ -84,7 +84,7 @@ const BdCarousel = ({bds}) => {
                             <Text style={{fontSize: 15}}>sfdsxc</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Date d'edition:</Text>
                             <Text style={{fontSize: 15}}>fghdf</Text>
-                            <Text style={{fontSize: 15, fontWeight: 'bold'}}>prix:</Text>
+                            <Text style={{fontSize: 25, fontWeight: 'bold'}}>prix:</Text>
                             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                                 <Text style={{fontSize: 40}}>35.20€</Text>
                             </View>

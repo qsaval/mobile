@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, FlatList, Image, Pressable, Text, TextInput, View} from "react-native";
 import { EvilIcons } from '@expo/vector-icons';
 import Quantite from "./Quantite";
+import quantite from "./Quantite";
 
 const Panier = () => {
 
@@ -31,8 +32,6 @@ const Panier = () => {
         const stateCopyUpdated = stateCopy.filter((produit) => produit.id !== id)
         setState(stateCopyUpdated)
     }
-
-
 
     return (
        <View style={{ flex: 1, padding: 24 }}>
