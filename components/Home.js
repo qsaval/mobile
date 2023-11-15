@@ -14,14 +14,17 @@ export default function Home(){
         ],
         categories: [
             {
+                id: 1,
                 nom_categorie: 'bd',
                 image: require('../assets/image/bd.png')
             },
             {
+                id: 2,
                 nom_categorie: 'comic',
                 image: require('../assets/image/comic.png')
             },
             {
+                id: 3,
                 nom_categorie: 'manga',
                 image: require('../assets/image/manga.png')
             }
@@ -37,7 +40,7 @@ export default function Home(){
             <View style={{ padding: 24, marginTop: 20 }}>
                 <View style={{flexDirection: 'row', margin:20}}>
                     {image.categories.map((categorie) =>
-                        <View style={{marginEnd:10}}>
+                        <View key={categorie.id} style={{marginEnd:10}} >
                             <Image style={{width: 100, height: 100}} source={categorie.image}/>
                             <Button title={categorie.nom_categorie}/>
                         </View>
