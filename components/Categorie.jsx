@@ -18,6 +18,17 @@ function CategorieScreen({navigation}) {
             });
     },[])
 
+    var image ={
+        'BD': require('../assets/image/bd.png'),
+        'Comic': require('../assets/image/comic.png'),
+        'Manga': require('../assets/image/manga.png'),
+        'Marvel': require('../assets/image/marvel.png'),
+        'DC': require('../assets/image/dc.png'),
+        'Shonen': require('../assets/image/shonen.png'),
+        'Seinen': require('../assets/image/seinen.png'),
+    }
+
+
     return (
         <View style={{flex: 1, padding: 24}}>
 
@@ -27,6 +38,7 @@ function CategorieScreen({navigation}) {
                 renderItem={({item}) => (
                     <View style={{marginBottom: 20}}>
                         <View style={{flex: 1, alignItems: 'center'}}>
+                            <Image style={{width:225, height:125, marginBottom: 30, padding: 24, marginTop: 20 }} source={image[item.nom_categorie]}/>
                         </View>
                         <Button title={item.nom_categorie}  onPress={() => navigation.navigate({
                             name: item.nom_categorie,

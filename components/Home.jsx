@@ -23,6 +23,16 @@ function HomeScreen({navigation}){
             .catch(e => console.log(e))
     },[])
 
+    var image ={
+        'BD': require('../assets/image/bd.png'),
+        'Comic': require('../assets/image/comic.png'),
+        'Manga': require('../assets/image/manga.png'),
+        'Marvel': require('../assets/image/marvel.png'),
+        'DC': require('../assets/image/dc.png'),
+        'Shonen': require('../assets/image/shonen.png'),
+        'Seinen': require('../assets/image/seinen.png'),
+    }
+
     return (
         <View>
             <StatusBar hidden={true}/>
@@ -33,7 +43,7 @@ function HomeScreen({navigation}){
             <View style={{ padding: 24, marginTop: 20 }}>
                 <View style={{flexDirection: 'row', margin:20}}>
                     <View style={{marginEnd:10}} >
-                        {/*<Image style={{width: 100, height: 100}} source={categorie.image}/>*/}
+                        <Image style={{width: 100, height: 100}} source={require('../assets/image/bd.png')}/>
                         <Button title="bd" onPress={() => navigation.navigate({
                             name: "BD",
                             params: { id: 1, nom_categorie: "bd" }
@@ -41,7 +51,7 @@ function HomeScreen({navigation}){
                     </View>
                     {cat.map((categorie) =>
                         <View key={categorie.id} style={{marginEnd:10}} >
-                            {/*<Image style={{width: 100, height: 100}} source={categorie.image}/>*/}
+                            <Image style={{width: 100, height: 100}} source={image[categorie.nom_categorie]}/>
                             <Button title={categorie.nom_categorie} onPress={() => navigation.navigate({
                                 name: categorie.nom_categorie,
                                 params: { id: categorie.id, nom_categorie: categorie.nom_categorie }
