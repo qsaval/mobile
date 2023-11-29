@@ -4,8 +4,6 @@ import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import Home from './components/Home';
 import Categorie from "./components/Categorie";
-import Panier from "./components/Panier";
-
 
 const tab = createBottomTabNavigator()
 
@@ -14,8 +12,8 @@ export default function App(){
     return(
         <NavigationContainer>
             <tab.Navigator screenOptions={{
-                tabBarActiveBackgroundColor: '#4173ef',
-                tabBarStyle: { backgroundColor: 'blue'},
+                tabBarActiveBackgroundColor: '#65A9F6',
+                tabBarStyle: { backgroundColor: '#0078FF'},
                 tabBarLabelStyle: { display: 'none' }
             }}>
                 <tab.Screen name="Home" component={Home} options={{ tabBarIcon: () => (
@@ -27,10 +25,6 @@ export default function App(){
                         <AntDesign name="book" size={24} color="white" />
                     ),
                     headerShown: false
-                }}/>
-                <tab.Screen name="Panier" component={Panier} options={{ tabBarIcon: () => (
-                        <AntDesign name="shoppingcart" size={24} color="white" />
-                    )
                 }}/>
             </tab.Navigator>
         </NavigationContainer>)

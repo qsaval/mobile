@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Animated, Dimensions, Image, PanResponder, Text, View} from "react-native";
+import Moment from 'moment';
 
 const BdCarousel = ({bds}) => {
     let {width} = Dimensions.get('window')
@@ -69,30 +70,32 @@ const BdCarousel = ({bds}) => {
         setState({width: state.width ,page: page, translate: state.translate})
     }
 
+    Moment.locale('fr')
+
     return (
-        <Animated.View {...panResponder.panHandlers} style={{backgroundColor: '#8fadf8', flexDirection: 'row', width: bds.length * state.width, left: (state.page + 1) * -1 * state.width, transform: [{translateX: state.translate}]}}>
+        <Animated.View {...panResponder.panHandlers} style={{backgroundColor: '#97C5FA', flexDirection: 'row', width: bds.length * state.width, left: (state.page + 1) * -1 * state.width, transform: [{translateX: state.translate}]}}>
             <View style={{width: state.width}}></View>
             {bds.map((produit,k) => {
                 return(
-                    <View key={k} style={{width: state.width, flexDirection: 'row', backgroundColor: '#8fadf8', paddingVertical: 20 }}>
-                        <Image style={{marginStart: 20}} source={produit}/>
+                    <View key={k} style={{width: state.width, flexDirection: 'row', backgroundColor: '#97C5FA', paddingVertical: 20 }}>
+                        <Image style={{marginStart: 20}} source={produit.image_bd}/>
                         <View style={{marginStart: 20}}>
-                            <Text style={{fontSize: 30, fontWeight: 'bold'}}>titre</Text>
+                            <Text style={{fontSize: 30, fontWeight: 'bold'}}>{produit.titre}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Auteur:</Text>
-                            <Text style={{fontSize: 15}}>dsfcsd</Text>
+                            <Text style={{fontSize: 15}}>{produit.auteur}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Editeur:</Text>
-                            <Text style={{fontSize: 15}}>sfdsxc</Text>
+                            <Text style={{fontSize: 15}}>{produit.editeur}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Date d'edition:</Text>
-                            <Text style={{fontSize: 15}}>fghdf</Text>
+                            <Text style={{fontSize: 15}}>{Moment(produit.date_edition).format('d/MM/YYYY')}</Text>
                             <Text style={{fontSize: 25, fontWeight: 'bold'}}>prix:</Text>
                             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                                <Text style={{fontSize: 40}}>35.20€</Text>
+                                <Text style={{fontSize: 40}}>{produit.prix}€</Text>
                             </View>
                         </View>
                     </View>
                 )
             })}
-            <View style={{width: state.width, backgroundColor: '#8fadf8'}}></View>
+            <View style={{width: state.width, backgroundColor: '#97C5FA'}}></View>
         </Animated.View>
     );
 };
