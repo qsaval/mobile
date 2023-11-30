@@ -31,17 +31,17 @@ function CategorieScreen({navigation}) {
 
     return (
         <View style={{flex: 1, padding: 24}}>
-
             <FlatList
                 data={data}
                 keyExtractor={({id}) => id}
                 renderItem={({item}) => (
                     <View style={{marginBottom: 20}}>
                         <View style={{flex: 1, alignItems: 'center'}}>
+                            {/*<Image style={{width:225, height:125, marginBottom: 30, padding: 24, marginTop: 20 }} source={{uri: 'https://127.0.0.1:8001/image/'+item.image_bd}}/>*/}
                             <Image style={{width:225, height:125, marginBottom: 30, padding: 24, marginTop: 20 }} source={image[item.nom_categorie]}/>
                         </View>
                         <Button title={item.nom_categorie}  onPress={() => navigation.navigate({
-                            name: item.nom_categorie,
+                            name: 'list'+item.nom_categorie,
                             params: { id: item.id, nom_categorie: item.nom_categorie }
                         })} />
                     </View>
@@ -75,7 +75,7 @@ const Categorie = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Categorie" component={CategorieScreen}/>
-            {categories.map((c,index) => (<Stack.Screen key={index} name={c.nom_categorie} component={ListeScreen} options={{headerShown: false}}/>))}
+            {categories.map((c,index) => (<Stack.Screen key={index} name={`list${c.nom_categorie}`} component={ListeScreen} options={{headerShown: false}}/>))}
         </Stack.Navigator>
     );
 };

@@ -37,15 +37,17 @@ function HomeScreen({navigation}){
         <View>
             <StatusBar hidden={true}/>
             <View style={{alignItems: 'center'}}>
+                {/*<Image source={{uri: 'https://127.0.0.1:8001/image/logo.png',}} style={{width:100, height:100, marginBottom: 30, padding: 24, marginTop: 20 }}/>*/}
                 <Image source={require('../assets/image/logo.png')} style={{width:100, height:100, marginBottom: 30, padding: 24, marginTop: 20 }}/>
             </View>
             <BdCarousel bds={bd} />
             <View style={{ padding: 24, marginTop: 20 }}>
                 <View style={{flexDirection: 'row', margin:20}}>
                     <View style={{marginEnd:10}} >
+                        {/*<Image style={{width: 100, height: 100}} source={{uri: 'https://127.0.0.1:8001/image/bd.png',}}/>*/}
                         <Image style={{width: 100, height: 100}} source={require('../assets/image/bd.png')}/>
                         <Button title="bd" onPress={() => navigation.navigate({
-                            name: "BD",
+                            name: "listBD",
                             params: { id: 1, nom_categorie: "bd" }
                         })}/>
                     </View>
@@ -53,7 +55,7 @@ function HomeScreen({navigation}){
                         <View key={categorie.id} style={{marginEnd:10}} >
                             <Image style={{width: 100, height: 100}} source={image[categorie.nom_categorie]}/>
                             <Button title={categorie.nom_categorie} onPress={() => navigation.navigate({
-                                name: categorie.nom_categorie,
+                                name: 'list'+categorie.nom_categorie,
                                 params: { id: categorie.id, nom_categorie: categorie.nom_categorie }
                             })}/>
                         </View>
@@ -85,9 +87,9 @@ const Home = () => {
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="home" component={HomeScreen}/>
-            <Stack.Screen name="BD" component={BdScreen}/>
-            <Stack.Screen name="Comic" component={ComicScreen}/>
-            <Stack.Screen name="Manga" component={ComicScreen}/>
+            <Stack.Screen name="listBD" component={BdScreen}/>
+            <Stack.Screen name="listComic" component={ComicScreen}/>
+            <Stack.Screen name="listManga" component={ComicScreen}/>
         </Stack.Navigator>
     );
 };

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Image, Text, View} from "react-native";
+import {Image, ScrollView, Text, View} from "react-native";
 import axios from "axios";
 import Moment from 'moment';
 
@@ -8,11 +8,11 @@ const Detail = ({value}) => {
 
     var image = {
         'Eigyr': require('../assets/image/eigyr.jpeg'),
-        'Pendragon - L\'épee perdue - Tome 1':  require('../assets/image/pendragon:lepee_perdue_t1.jpeg'),
-        'Webster & Jones': require('../assets/image/webster&jones.jpeg'),
+        "Pendragon - L'épee perdue - Tome 1":  require('../assets/image/pendragon_lepee_perdue_t1.jpeg'),
+        'Webster & Jones': require('../assets/image/websterjones.jpeg'),
         'Marvel Comic n°19': require('../assets/image/marvel_comic_n19.jpeg'),
-        'X-Men - Proteus': require('../assets/image/x-men:proteus.jpeg'),
-        'Punisher - La fin du punisher - Tome 3': require('../assets/image/punisher:la_fin_du_punisher_t3.jpeg'),
+        'X-Men - Proteus': require('../assets/image/x-men_proteus.jpeg'),
+        'Punisher - La fin du punisher - Tome 3': require('../assets/image/punisher_la_fin_du_punisher_t3.jpeg'),
         'Flash infinite - Tome 3': require('../assets/image/flash_infinite_t3.jpeg'),
         'Harley Quinn infinite - Tome 3': require('../assets/image/harley_quinn_infinite_t3.jpeg'),
         'Superman Aventures - Tome 6': require('../assets/image/superman_aventures_t6.jpeg'),
@@ -37,8 +37,9 @@ const Detail = ({value}) => {
     Moment.locale('fr')
 
     return (
-        <View style={{ flex: 1, padding: 20 }}>
+        <View style={{ flex: 1, padding: 20, marginBottom: 20 }}>
             <View style={{flexDirection: "row", marginStart: 20}}>
+                {/*{bd && <Image source={{uri: 'https://127.0.0.1:8001/image/'+bd.image_bd}}/>}*/}
                 {bd && <Image source={image[bd.titre]}/>}
                 <View style={{flex: 1, justifyContent: 'center', marginStart:5}}>
                     <Text style={{fontWeight: 'bold', fontSize: 20}}>Auteur:</Text>
@@ -46,15 +47,15 @@ const Detail = ({value}) => {
                     <Text style={{fontWeight: 'bold', fontSize: 20}}>Editeur:</Text>
                     <Text style={{fontSize: 17}}>{bd && bd.editeur}</Text>
                     <Text style={{fontWeight: 'bold', fontSize: 20}}>Date d'edition:</Text>
-                    <Text style={{fontSize: 17}}>{bd && Moment(bd.date_edition).format('d/MM/YYYY')}</Text>
+                    <Text style={{fontSize: 17}}>{bd && Moment(bd.date_edition).format('DD/MM/YYYY')}</Text>
                     <Text style={{fontWeight: 'bold', fontSize: 20}}>Prix:</Text>
                     <Text style={{fontSize: 17}}>{bd && bd.prix}€</Text>
                 </View>
             </View>
-            <View style={{backgroundColor: '#97C5FA', padding: 20, marginVertical: 20}}>
+            <ScrollView style={{backgroundColor: '#97C5FA', padding: 20, marginVertical: 20}}>
                 <Text style={{fontWeight: 'bold', fontSize: 20}}>Resume :</Text>
                 <Text style={{fontSize: 17}}>{bd && bd.resume}</Text>
-            </View>
+            </ScrollView>
         </View>
     );
 };

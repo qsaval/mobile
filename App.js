@@ -21,7 +21,7 @@ export default function App(){
                     ),
                     headerShown: false
                 }}/>
-                <tab.Screen name="Categorie" component={Categorie} options={{ tabBarIcon: () => (
+                <tab.Screen name="listeCategorie" component={Categorie} options={{ tabBarIcon: () => (
                         <AntDesign name="book" size={24} color="white" />
                     ),
                     headerShown: false

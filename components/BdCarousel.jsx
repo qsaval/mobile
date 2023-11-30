@@ -74,11 +74,11 @@ const BdCarousel = ({bds}) => {
 
     var image = {
         'Eigyr': require('../assets/image/eigyr.jpeg'),
-        'Pendragon - L\'épee perdue - Tome 1':  require('../assets/image/pendragon:lepee_perdue_t1.jpeg'),
-        'Webster & Jones': require('../assets/image/webster&jones.jpeg'),
+        'Pendragon - L\'épee perdue - Tome 1':  require('../assets/image/pendragon_lepee_perdue_t1.jpeg'),
+        'Webster & Jones': require('../assets/image/websterjones.jpeg'),
         'Marvel Comic n°19': require('../assets/image/marvel_comic_n19.jpeg'),
-        'X-Men - Proteus': require('../assets/image/x-men:proteus.jpeg'),
-        'Punisher - La fin du punisher - Tome 3': require('../assets/image/punisher:la_fin_du_punisher_t3.jpeg'),
+        'X-Men - Proteus': require('../assets/image/x-men_proteus.jpeg'),
+        'Punisher - La fin du punisher - Tome 3': require('../assets/image/punisher_la_fin_du_punisher_t3.jpeg'),
         'Flash infinite - Tome 3': require('../assets/image/flash_infinite_t3.jpeg'),
         'Harley Quinn infinite - Tome 3': require('../assets/image/harley_quinn_infinite_t3.jpeg'),
         'Superman Aventures - Tome 6': require('../assets/image/superman_aventures_t6.jpeg'),
@@ -96,6 +96,7 @@ const BdCarousel = ({bds}) => {
             {bds.map((produit,k) => {
                 return(
                     <View key={k} style={{width: state.width, flexDirection: 'row', backgroundColor: '#97C5FA', paddingVertical: 20 }}>
+                        {/*<Image style={{marginStart: 20}} source={{uri: 'https://127.0.0.1:8001/image/'+produit.image_bd}}/>*/}
                         <Image style={{marginStart: 20}} source={image[produit.titre]}/>
                         <View style={{marginStart: 20}}>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>{produit.titre}</Text>
@@ -104,7 +105,7 @@ const BdCarousel = ({bds}) => {
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Editeur:</Text>
                             <Text style={{fontSize: 15}}>{produit.editeur}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Date d'edition:</Text>
-                            <Text style={{fontSize: 15}}>{Moment(produit.date_edition).format('d/MM/YYYY')}</Text>
+                            <Text style={{fontSize: 15}}>{Moment(produit.date_edition).format('DD/MM/YYYY')}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>prix:</Text>
                             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                                 <Text style={{fontSize: 40}}>{produit.prix}€</Text>
