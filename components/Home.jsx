@@ -53,6 +53,7 @@ function HomeScreen({navigation}){
                     </View>
                     {cat.map((categorie) =>
                         <View key={categorie.id} style={{marginEnd:10}} >
+                            {/*<Image style={{width: 100, height: 100}} source={{uri: `https://127.0.0.1:8001/image/${categorie.image_categorie}`,}}/>*/}
                             <Image style={{width: 100, height: 100}} source={image[categorie.nom_categorie]}/>
                             <Button title={categorie.nom_categorie} onPress={() => navigation.navigate({
                                 name: 'list'+categorie.nom_categorie,

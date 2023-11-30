@@ -37,7 +37,7 @@ function CategorieScreen({navigation}) {
                 renderItem={({item}) => (
                     <View style={{marginBottom: 20}}>
                         <View style={{flex: 1, alignItems: 'center'}}>
-                            {/*<Image style={{width:225, height:125, marginBottom: 30, padding: 24, marginTop: 20 }} source={{uri: 'https://127.0.0.1:8001/image/'+item.image_bd}}/>*/}
+                            {/*<Image style={{width:225, height:125, marginBottom: 30, padding: 24, marginTop: 20 }} source={{uri: `https://127.0.0.1:8001/image/${item.image_bd}`}}/>*/}
                             <Image style={{width:225, height:125, marginBottom: 30, padding: 24, marginTop: 20 }} source={image[item.nom_categorie]}/>
                         </View>
                         <Button title={item.nom_categorie}  onPress={() => navigation.navigate({

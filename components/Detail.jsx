@@ -39,7 +39,7 @@ const Detail = ({value}) => {
     return (
         <View style={{ flex: 1, padding: 20, marginBottom: 20 }}>
             <View style={{flexDirection: "row", marginStart: 20}}>
-                {/*{bd && <Image source={{uri: 'https://127.0.0.1:8001/image/'+bd.image_bd}}/>}*/}
+                {/*{bd && <Image source={{uri: `https://127.0.0.1:8001/image/${bd.image_bd}`}}/>}*/}
                 {bd && <Image source={image[bd.titre]}/>}
                 <View style={{flex: 1, justifyContent: 'center', marginStart:5}}>
                     <Text style={{fontWeight: 'bold', fontSize: 20}}>Auteur:</Text>

@@ -96,7 +96,7 @@ const BdCarousel = ({bds}) => {
             {bds.map((produit,k) => {
                 return(
                     <View key={k} style={{width: state.width, flexDirection: 'row', backgroundColor: '#97C5FA', paddingVertical: 20 }}>
-                        {/*<Image style={{marginStart: 20}} source={{uri: 'https://127.0.0.1:8001/image/'+produit.image_bd}}/>*/}
+                        {/*<Image style={{marginStart: 20}} source={{uri: `https://127.0.0.1:8001/image/${produit.image_bd}`}}/>*/}
                         <Image style={{marginStart: 20}} source={image[produit.titre]}/>
                         <View style={{marginStart: 20}}>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>{produit.titre}</Text>

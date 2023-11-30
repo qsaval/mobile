@@ -42,7 +42,7 @@ const BdScreen = ({route, navigation}) => {
                 keyExtractor={({id}) => id}
                 renderItem={({item}) => (
                     <View style={{marginBottom: 20}}>
-                        {/*<Image style={{marginStart: 70}} source={{uri: 'https://127.0.0.1:8001/image/'+item.image_bd}} />*/}
+                        {/*<Image style={{marginStart: 70}} source={{uri: `https://127.0.0.1:8001/image/${item.image_bd}`}} />*/}
                         <Image style={{marginStart: 70}} source={image[item.titre]} />
                         <Text style={{textAlign: 'center', fontSize: 20}}>{item.titre}</Text>
                         <Button title="Detail" onPress={() => navigation.navigate({
