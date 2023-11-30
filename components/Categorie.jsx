@@ -18,7 +18,7 @@ function CategorieScreen({navigation}) {
             });
     },[])
 
-    var image ={
+     let image ={
         'BD': require('../assets/image/bd.png'),
         'Comic': require('../assets/image/comic.png'),
         'Manga': require('../assets/image/manga.png'),

@@ -13,7 +13,7 @@ const FilleCategorieScreen = ({route,navigation}) => {
             .catch(e => console.log(e))
     }, []);
 
-    var image ={
+      let image ={
         'BD': require('../assets/image/bd.png'),
         'Comic': require('../assets/image/comic.png'),
         'Manga': require('../assets/image/manga.png'),

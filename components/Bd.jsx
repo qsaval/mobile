@@ -17,7 +17,7 @@ const BdScreen = ({route, navigation}) => {
             });
     },[])
 
-    var image = {
+     let image = {
         'Eigyr': require('../assets/image/eigyr.jpeg'),
         'Pendragon - L\'épee perdue - Tome 1':  require('../assets/image/pendragon_lepee_perdue_t1.jpeg'),
         'Webster & Jones': require('../assets/image/websterjones.jpeg'),
