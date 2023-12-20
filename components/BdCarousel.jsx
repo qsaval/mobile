@@ -99,14 +99,14 @@ const BdCarousel = ({bds}) => {
                         {/*<Image style={{marginStart: 20}} source={{uri: `https://127.0.0.1:8001/image/${produit.image_bd}`}}/>*/}
                         <Image style={{marginStart: 20}} source={image[produit.titre]}/>
                         <View style={{marginStart: 20}}>
-                            <Text style={{fontSize: 15, fontWeight: 'bold'}}>{produit.titre}</Text>
+                            <Text style={{fontSize: 25, width: 150 ,fontWeight: 'bold'}}>{produit.titre}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Auteur:</Text>
                             <Text style={{fontSize: 15}}>{produit.auteur}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Editeur:</Text>
                             <Text style={{fontSize: 15}}>{produit.editeur}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Date d'edition:</Text>
                             <Text style={{fontSize: 15}}>{Moment(produit.date_edition).format('DD/MM/YYYY')}</Text>
-                            <Text style={{fontSize: 15, fontWeight: 'bold'}}>prix:</Text>
+                            <Text style={{fontSize: 15, fontWeight: 'bold'}}>Prix:</Text>
                             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                                 <Text style={{fontSize: 40}}>{produit.prix}€</Text>
                             </View>
