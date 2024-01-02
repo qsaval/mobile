@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {Animated, Dimensions, Image, PanResponder, Text, View} from "react-native";
+import {Animated, Dimensions, Image, PanResponder, Pressable, Text, View} from "react-native";
 import Moment from 'moment';
 
-const BdCarousel = ({bds}) => {
+const BdCarousel = ({bds, navidation}) => {
     let {width} = Dimensions.get('window')
     const [state, setState] = useState({
         width: width,
@@ -93,26 +93,30 @@ const BdCarousel = ({bds}) => {
     return (
         <Animated.View {...panResponder.panHandlers} style={{backgroundColor: '#97C5FA', flexDirection: 'row', width: bds.length * state.width, left: (state.page + 1) * -1 * state.width, transform: [{translateX: state.translate}]}}>
             <View style={{width: state.width}}></View>
-            {bds.map((produit,k) => {
+            {bds.map((b,k) => {
                 return(
-                    <View key={k} style={{width: state.width, flexDirection: 'row', backgroundColor: '#97C5FA', paddingVertical: 20 }}>
-                        {/*<Image style={{marginStart: 20}} source={{uri: `https://127.0.0.1:8001/image/${produit.image_bd}`}}/>*/}
-                        <Image style={{marginStart: 20}} source={image[produit.titre]}/>
+                    <Pressable onPress={() => navidation.navigate({
+                        name: b.titre,
+                        params: {titre: b.titre, id: b.id}
+                    })} key={k} style={{width: state.width, flexDirection: 'row', backgroundColor: '#97C5FA', paddingVertical: 20 }}>
+                        {/*<Image style={{marginStart: 20}} source={{uri: `https://127.0.0.1:8001/image/${b.image_bd}`}}/>*/}
+                        <Image style={{marginStart: 20}} source={image[b.titre]}/>
                         <View style={{marginStart: 20}}>
-                            <Text style={{fontSize: 25, width: 150 ,fontWeight: 'bold'}}>{produit.titre}</Text>
+                            <Text style={{fontSize: 25, width: 150 ,fontWeight: 'bold'}}>{b.titre}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Auteur:</Text>
-                            <Text style={{fontSize: 15}}>{produit.auteur}</Text>
+                            <Text style={{fontSize: 15}}>{b.auteur}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Editeur:</Text>
-                            <Text style={{fontSize: 15}}>{produit.editeur}</Text>
+                            <Text style={{fontSize: 15}}>{b.editeur}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Date d'edition:</Text>
-                            <Text style={{fontSize: 15}}>{Moment(produit.date_edition).format('DD/MM/YYYY')}</Text>
+                            <Text style={{fontSize: 15}}>{Moment(b.date_edition).format('DD/MM/YYYY')}</Text>
                             <Text style={{fontSize: 15, fontWeight: 'bold'}}>Prix:</Text>
                             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                                <Text style={{fontSize: 40}}>{produit.prix}€</Text>
+                                <Text style={{fontSize: 40}}>{b.prix}€</Text>
                             </View>
                         </View>
-                    </View>
-                )
+                    </Pressable>
+
+            )
             })}
             <View style={{width: state.width, backgroundColor: '#97C5FA'}}></View>
         </Animated.View>

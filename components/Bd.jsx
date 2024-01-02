@@ -44,7 +44,7 @@ const BdScreen = ({route, navigation}) => {
                     <View style={{marginBottom: 20}}>
                         {/*<Image style={{marginStart: 70}} source={{uri: `https://127.0.0.1:8001/image/${item.image_bd}`}} />*/}
                         <Image style={{marginStart: 70}} source={image[item.titre]} />
-                        <Text style={{textAlign: 'center', fontSize: 20}}>{item.titre}</Text>
+                        <Text style={{textAlign: 'center', fontSize: 20, fontWeight: 'bold'}}>{item.titre}</Text>
                         <Button title="Detail" onPress={() => navigation.navigate({
                             name: item.titre,
                             params: {titre: item.titre, id: item.id}

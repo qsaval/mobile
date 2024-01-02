@@ -29,7 +29,7 @@ const ListeBdScreen = ({route, navigation}) => {
         'Superman Aventures - Tome 6': require('../assets/image/superman_aventures_t6.jpeg'),
         'Sakamoto Days - Tome 1': require('../assets/image/sakamoto_days_t1.jpeg'),
         'Dandadan - Tome 6': require('../assets/image/dandadan6.jpeg'),
-        'jujutsu kaisen - Tome 1': require('../assets/image/jujutsu_kaisen1.jpeg'),
+        'Jujutsu Kaisen - Tome 1': require('../assets/image/jujutsu_kaisen1.jpeg'),
         'Alpi - The Soul Sender - Tome 1': require('../assets/image/alpi_the_soul_sender_t1.jpeg'),
         'Villageois lvl 999 - Tome 1': require('../assets/image/villageois_lvl_999.jpeg'),
         'Gantz :E - Tome 4': require('../assets/image/gantz4.jpeg')
@@ -44,7 +44,7 @@ const ListeBdScreen = ({route, navigation}) => {
                     <View style={{marginBottom: 20}}>
                         {/*<Image style={{marginStart: 70}} source={{uri: `https://127.0.0.1:8001/image/${item.image_bd}`}} />*/}
                         <Image style={{marginStart: 70}} source={image[item.titre]} />
-                        <Text style={{textAlign: 'center', fontSize: 20}}>{item.titre}</Text>
+                        <Text style={{textAlign: 'center', fontSize: 20, fontWeight: 'bold'}}>{item.titre}</Text>
                         <Button title="Detail" onPress={() => navigation.navigate({
                             name: item.titre,
                             params: {titre: item.titre, id: item.id}
@@ -54,12 +54,6 @@ const ListeBdScreen = ({route, navigation}) => {
             />
         </View>
     );
-}
-
-const DetailScreen = ({route}) => {
-  return (
-      <Detail value={route.params.id} />
-  )
 }
 
 const Liste = ({ value, categorie}) => {
@@ -80,7 +74,7 @@ const Liste = ({ value, categorie}) => {
     return (
         <Stack.Navigator>
             <Stack.Screen name={categorie} component={ListeBdScreen} initialParams={{id: value}} />
-            {data.map((c,index) => (<Stack.Screen key={index} name={c.titre} component={DetailScreen} />))}
+            {data.map((c,index) => (<Stack.Screen key={index} name={c.titre} component={Detail} />))}
         </Stack.Navigator>
     );
 };
