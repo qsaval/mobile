@@ -46,20 +46,11 @@ const FilleCategorieScreen = ({route,navigation}) => {
 
     );
 };
-
-const ListeBdScreen = ({route}) => {
-
-    return(
-        <Liste value={route.params.id} categorie={route.params.nom_categorie}/>
-    )
-}
-
-
-const FilleCategorie = ({value, categorie}) => {
+const FilleCategorie = ({route}) => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        axios.get('http://10.0.2.2:8000/lireCat.php?key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9&id=' + value)
+        axios.get('http://10.0.2.2:8000/lireCat.php?key=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlF1ZW50aW4gU2F2YWwiLCJpYXQiOjE1MTYyMzkwMjJ9&id=' + route.params.id)
             .then(r=> setData(r.data))
             .catch(e => console.log(e))
     }, []);
@@ -67,8 +58,8 @@ const FilleCategorie = ({value, categorie}) => {
     const Stack = createStackNavigator()
     return (
         <Stack.Navigator>
-            <Stack.Screen name={categorie} component={FilleCategorieScreen} initialParams={{id: value}}/>
-            {data.map((d,index) => (<Stack.Screen key={index} name={ `list${d.nom_categorie}`} component={ListeBdScreen} options={{headerShown: false}}/>))}
+            <Stack.Screen name={route.params.nom_categorie} component={FilleCategorieScreen} initialParams={{id: route.params.id}}/>
+            {data.map((d,index) => (<Stack.Screen key={index} name={ `list${d.nom_categorie}`} component={Liste} options={{headerShown: false}}/>))}
         </Stack.Navigator>
     );
 }

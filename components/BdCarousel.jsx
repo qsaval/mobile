@@ -115,8 +115,7 @@ const BdCarousel = ({bds, navidation}) => {
                             </View>
                         </View>
                     </Pressable>
-
-            )
+                )
             })}
             <View style={{width: state.width, backgroundColor: '#97C5FA'}}></View>
         </Animated.View>

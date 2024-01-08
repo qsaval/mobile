@@ -68,20 +68,6 @@ function HomeScreen({navigation}){
     )
 }
 
-const BdScreen = ({route}) => {
-    return (
-        <Bd value={route.params.id}/>
-    )
-};
-
-const ComicScreen = ({route}) => {
-    return (
-        <FilleCategorie value={route.params.id} categorie={route.params.nom_categorie}/>
-    )
-};
-
-
-
 const Home = () => {
      const [bd, setBd] = useState([])
 
@@ -94,9 +80,9 @@ const Home = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="home" component={HomeScreen} options={{headerShown: false}}/>
-            <Stack.Screen name="listBD" component={BdScreen} options={{headerShown: false}}/>
-            <Stack.Screen name="listComic" component={ComicScreen} options={{headerShown: false}}/>
-            <Stack.Screen name="listManga" component={ComicScreen} options={{headerShown: false}}/>
+            <Stack.Screen name="listBD" component={Bd} options={{headerShown: false}}/>
+            <Stack.Screen name="listComic" component={FilleCategorie} options={{headerShown: false}}/>
+            <Stack.Screen name="listManga" component={FilleCategorie} options={{headerShown: false}}/>
             {bd.map((c,index) => (<Stack.Screen key={index} name={c.titre} component={Detail} />))}
         </Stack.Navigator>
     );
