@@ -1,4 +1,4 @@
-import {Button, FlatList, Image, StatusBar, Text, View} from 'react-native'
+import {Button, Image, StatusBar, View} from 'react-native'
 import React, {useEffect, useState} from "react";
 import BdCarousel from "./BdCarousel";
 import {createStackNavigator} from "@react-navigation/stack";
@@ -47,7 +47,7 @@ function HomeScreen({navigation}){
                         {/*<Image style={{width: 100, height: 100}} source={{uri: 'https://127.0.0.1:8001/image/bd.png',}}/>*/}
                         <Image style={{width: 100, height: 100}} source={require('../assets/image/bd.png')}/>
                         <Button title="bd" onPress={() => navigation.navigate({
-                            name: "listBD",
+                            name: "BD",
                             params: { id: 1, nom_categorie: "bd" }
                         })}/>
                     </View>
@@ -80,7 +80,7 @@ const Home = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="home" component={HomeScreen} options={{headerShown: false}}/>
-            <Stack.Screen name="listBD" component={Bd} options={{headerShown: false}}/>
+            <Stack.Screen name="BD" component={Bd}/>
             <Stack.Screen name="listComic" component={FilleCategorie} options={{headerShown: false}}/>
             <Stack.Screen name="listManga" component={FilleCategorie} options={{headerShown: false}}/>
             {bd.map((c,index) => (<Stack.Screen key={index} name={c.titre} component={Detail} />))}
