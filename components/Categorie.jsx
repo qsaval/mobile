@@ -50,12 +50,6 @@ function CategorieScreen({navigation}) {
         </View>
     );
 }
-const ListeScreen = ({route}) => {
-
-  return(
-      <Liste value={route.params.id} categorie={route.params.nom_categorie}/>
-  )
-}
 
 const Categorie = () => {
     const [categories, setCategories] = useState([]);
@@ -75,7 +69,7 @@ const Categorie = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Categorie" component={CategorieScreen}/>
-            {categories.map((c,index) => (<Stack.Screen key={index} name={`list${c.nom_categorie}`} component={ListeScreen} options={{headerShown: false}}/>))}
+            {categories.map((c,index) => (<Stack.Screen key={index} name={`list${c.nom_categorie}`} component={Liste} options={{headerShown: false}}/>))}
         </Stack.Navigator>
     );
 };
